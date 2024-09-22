@@ -2,20 +2,33 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
     firstName :{
-        type : String
+        type : String,
+        required:true,
+        minLength:3,
+        unique:true,
     },
     lastName : {
         type : String
     },
     age : {
-        type : Number
+        type : Number,
+        min:18,
+        max:40
     },
     phNumber:{
-        type : Number
+        type : Number,
+        unique:true,
     },
     gender:{
-        type:String
+        type:String,
+        enum:["male","female","others"]
+    },
+    about:{
+        type:String,
+        default:"ntg much"
     }
+},{
+    timestamps:true
 })
 
 module.exports=mongoose.model("User",userSchema);
