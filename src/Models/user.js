@@ -5,10 +5,12 @@ const userSchema = new mongoose.Schema({
         type : String,
         required:true,
         minLength:3,
-        unique:true,
+        maxLength:18,
     },
     lastName : {
-        type : String
+        type : String,
+        minLength:3,
+        maxLength:18,
     },
     age : {
         type : Number,
@@ -17,7 +19,15 @@ const userSchema = new mongoose.Schema({
     },
     phNumber:{
         type : Number,
+    },
+    email:{
+        required:true,
         unique:true,
+        type:String
+    },
+    password:{
+        required:true,
+        type:String
     },
     gender:{
         type:String,
@@ -25,8 +35,12 @@ const userSchema = new mongoose.Schema({
     },
     about:{
         type:String,
-        default:"ntg much"
+        default:"ntg much",
+    },
+    skills : {
+        type:[String],
     }
+
 },{
     timestamps:true
 })
